@@ -4,6 +4,7 @@
 #import "NSString+DDXML.h"
 #import "DDXML.h"
 #import "DDXMLDocument.h"
+#import "DDXMLDTD.h"
 #import "DDXMLElement.h"
 #import "DDXMLNode.h"
 

@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import "DDXMLDTD.h"
 #import "DDXMLElement.h"
 #import "DDXMLNode.h"
 
@@ -33,21 +34,18 @@ NS_ASSUME_NONNULL_BEGIN
 {
 }
 
-- (nullable instancetype)initWithXMLString:(NSString *)string options:(NSUInteger)mask error:(NSError **)error;
+- (nullable instancetype)initWithXMLString:(NSString *)string options:(DDNSXMLNodeOptions)mask error:(NSError **)error;
 //- (instancetype)initWithContentsOfURL:(NSURL *)url options:(NSUInteger)mask error:(NSError **)error;
-- (nullable instancetype)initWithData:(NSData *)data options:(NSUInteger)mask error:(NSError **)error;
-//- (instancetype)initWithRootElement:(DDXMLElement *)element;
+- (nullable instancetype)initWithData:(NSData *)data options:(DDNSXMLNodeOptions)mask error:(NSError **)error;
+- (instancetype)initWithRootElement:(DDXMLElement *)element;
 
 //+ (Class)replacementClassForClass:(Class)cls;
 
-//- (void)setCharacterEncoding:(NSString *)encoding; //primitive
-//- (NSString *)characterEncoding; //primitive
+@property (nullable, copy) NSString *characterEncoding; //primitive
 
-//- (void)setVersion:(NSString *)version;
-//- (NSString *)version;
+@property (nullable, copy) NSString *version; //primitive
 
-//- (void)setStandalone:(BOOL)standalone;
-//- (BOOL)isStandalone;
+@property (getter=isStandalone) BOOL standalone; //primitive
 
 //- (void)setDocumentContentKind:(DDXMLDocumentContentKind)kind;
 //- (DDXMLDocumentContentKind)documentContentKind;
@@ -55,10 +53,9 @@ NS_ASSUME_NONNULL_BEGIN
 //- (void)setMIMEType:(NSString *)MIMEType;
 //- (NSString *)MIMEType;
 
-//- (void)setDTD:(DDXMLDTD *)documentTypeDeclaration;
-//- (DDXMLDTD *)DTD;
+@property (nullable, copy) DDXMLDTD *DTD; //primitive
 
-//- (void)setRootElement:(DDXMLNode *)root;
+- (void)setRootElement:(DDXMLNode *)root;
 - (nullable DDXMLElement *)rootElement;
 
 //- (void)insertChild:(DDXMLNode *)child atIndex:(NSUInteger)index;
@@ -74,7 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
 //- (void)replaceChildAtIndex:(NSUInteger)index withNode:(DDXMLNode *)node;
 
 @property (readonly, copy) NSData *XMLData;
-- (NSData *)XMLDataWithOptions:(NSUInteger)options;
+- (NSData *)XMLDataWithOptions:(DDNSXMLNodeOptions)options;
 
 //- (instancetype)objectByApplyingXSLT:(NSData *)xslt arguments:(NSDictionary *)arguments error:(NSError **)error;
 //- (instancetype)objectByApplyingXSLTString:(NSString *)xslt arguments:(NSDictionary *)arguments error:(NSError **)error;

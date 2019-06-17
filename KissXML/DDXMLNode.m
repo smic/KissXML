@@ -1136,7 +1136,7 @@ static void MarkDeath(void *xmlPtr, DDXMLNode *wrapper);
 	return [self XMLStringWithOptions:0];
 }
 
-- (NSString *)XMLStringWithOptions:(NSUInteger)options
+- (NSString *)XMLStringWithOptions:(DDNSXMLNodeOptions)options
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
 	DDXMLNotZombieAssert();
@@ -2918,7 +2918,7 @@ BOOL DDXMLIsZombie(void *xmlPtr, DDXMLNode *wrapper)
 - (NSString *)XMLString {
 	return @"";
 }
-- (NSString *)XMLStringWithOptions:(NSUInteger)options {
+- (NSString *)XMLStringWithOptions:(DDNSXMLNodeOptions)options {
 	return @"";
 }
 - (NSString *)canonicalXMLStringPreservingComments:(BOOL)comments {

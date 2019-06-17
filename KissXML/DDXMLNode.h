@@ -37,13 +37,13 @@ enum {
 };
 typedef NSUInteger DDXMLNodeKind NS_SWIFT_NAME(XMLNodeKind);
 
-enum {
-	DDXMLNodeOptionsNone NS_SWIFT_NAME(XMLNodeOptionsNone)                  = 0,
-	DDXMLNodeExpandEmptyElement NS_SWIFT_NAME(XMLNodeExpandEmptyElement)    = 1 << 1,
-	DDXMLNodeCompactEmptyElement NS_SWIFT_NAME(XMLNodeCompactEmptyElement)  = 1 << 2,
-	DDXMLNodePrettyPrint NS_SWIFT_NAME(XMLNodePrettyPrint)                  = 1 << 17,
+typedef NS_OPTIONS(NSUInteger, DDNSXMLNodeOptions) {
+    DDXMLNodeOptionsNone NS_SWIFT_NAME(nodeOptionsNone)                  = 0,
+    DDXMLNodeExpandEmptyElement NS_SWIFT_NAME(nodeExpandEmptyElement)    = 1 << 1,
+    DDXMLNodeCompactEmptyElement NS_SWIFT_NAME(nodeCompactEmptyElement)  = 1 << 2,
+    DDXMLNodePrettyPrint NS_SWIFT_NAME(nodePrettyPrint)                  = 1 << 17,
+    DDXMLNodePromoteSignificantWhitespace NS_SWIFT_NAME(nodePromoteSignificantWhitespace) = 1 << 28
 };
-
 
 NS_ASSUME_NONNULL_BEGIN
 @interface DDXMLNode : NSObject <NSCopying>
@@ -128,7 +128,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *XMLString;
-- (nonnull NSString *)XMLStringWithOptions:(NSUInteger)options;
+- (nonnull NSString *)XMLStringWithOptions:(DDNSXMLNodeOptions)options;
 //- (NSString *)canonicalXMLStringPreservingComments:(BOOL)comments;
 
 #pragma mark --- XPath/XQuery ---

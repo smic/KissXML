@@ -71,6 +71,10 @@ struct _xmlStd {
 };
 typedef struct _xmlStd *xmlStdPtr;
 
+NS_INLINE BOOL IsXmlElementPtr(void *kindPtr)
+{
+    return ((xmlKindPtr)kindPtr)->type == XML_ELEMENT_NODE;
+}
 
 NS_INLINE BOOL IsXmlAttrPtr(void *kindPtr)
 {

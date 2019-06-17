@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D4667B4C22B80E2300365E91 /* DDXMLDTD.h in Headers */ = {isa = PBXBuildFile; fileRef = D4667B4A22B80E2300365E91 /* DDXMLDTD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4667B4D22B80E2300365E91 /* DDXMLDTD.m in Sources */ = {isa = PBXBuildFile; fileRef = D4667B4B22B80E2300365E91 /* DDXMLDTD.m */; };
 		D4A0B52422B7C99E00E74E09 /* DDXML.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DCD8DDB1E54A3C6001D9832 /* DDXML.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4A0B52522B7C9A200E74E09 /* DDXMLDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DCD8DDD1E54A3C6001D9832 /* DDXMLDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4A0B52622B7C9A700E74E09 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCD8DDE1E54A3C6001D9832 /* DDXMLDocument.m */; };
@@ -39,12 +41,14 @@
 		0DCD8DE31E54A3C6001D9832 /* KissXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KissXML.h; sourceTree = "<group>"; };
 		0DCD8DE51E54A3C6001D9832 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
 		0DCD8DF51E54A3E9001D9832 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		D455A08C22B8192900E20BE3 /* UniversalFramework_Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UniversalFramework_Framework.xcconfig; sourceTree = "<group>"; };
+		D455A08D22B8192900E20BE3 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		D455A08E22B8192900E20BE3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D455A08F22B8192900E20BE3 /* UniversalFramework_Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UniversalFramework_Base.xcconfig; sourceTree = "<group>"; };
+		D455A09022B8192900E20BE3 /* UniversalFramework_Test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UniversalFramework_Test.xcconfig; sourceTree = "<group>"; };
+		D4667B4A22B80E2300365E91 /* DDXMLDTD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDXMLDTD.h; sourceTree = "<group>"; };
+		D4667B4B22B80E2300365E91 /* DDXMLDTD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDXMLDTD.m; sourceTree = "<group>"; };
 		D4A0B51C22B7C91D00E74E09 /* KissXML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KissXML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4A0B53222B7CA4D00E74E09 /* UniversalFramework_Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UniversalFramework_Framework.xcconfig; sourceTree = "<group>"; };
-		D4A0B53322B7CA4D00E74E09 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		D4A0B53422B7CA4D00E74E09 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		D4A0B53522B7CA4D00E74E09 /* UniversalFramework_Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UniversalFramework_Base.xcconfig; sourceTree = "<group>"; };
-		D4A0B53622B7CA4D00E74E09 /* UniversalFramework_Test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UniversalFramework_Test.xcconfig; sourceTree = "<group>"; };
 		D4A0B53722B7CA9C00E74E09 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libxml2.tbd; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
@@ -64,7 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				0DCD8DCC1E54A3A3001D9832 /* KissXML */,
-				D4A0B53122B7CA4D00E74E09 /* xcconfigs */,
+				D455A08B22B8192900E20BE3 /* XCConfigs */,
 				0DCD8DCB1E54A3A3001D9832 /* Products */,
 				0DCD8DF41E54A3E8001D9832 /* Frameworks */,
 			);
@@ -86,6 +90,8 @@
 				0DCD8DDB1E54A3C6001D9832 /* DDXML.h */,
 				0DCD8DDD1E54A3C6001D9832 /* DDXMLDocument.h */,
 				0DCD8DDE1E54A3C6001D9832 /* DDXMLDocument.m */,
+				D4667B4A22B80E2300365E91 /* DDXMLDTD.h */,
+				D4667B4B22B80E2300365E91 /* DDXMLDTD.m */,
 				0DCD8DDF1E54A3C6001D9832 /* DDXMLElement.h */,
 				0DCD8DE01E54A3C6001D9832 /* DDXMLElement.m */,
 				0DCD8DE11E54A3C6001D9832 /* DDXMLNode.h */,
@@ -135,16 +141,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D4A0B53122B7CA4D00E74E09 /* xcconfigs */ = {
+		D455A08B22B8192900E20BE3 /* XCConfigs */ = {
 			isa = PBXGroup;
 			children = (
-				D4A0B53222B7CA4D00E74E09 /* UniversalFramework_Framework.xcconfig */,
-				D4A0B53322B7CA4D00E74E09 /* LICENSE */,
-				D4A0B53422B7CA4D00E74E09 /* README.md */,
-				D4A0B53522B7CA4D00E74E09 /* UniversalFramework_Base.xcconfig */,
-				D4A0B53622B7CA4D00E74E09 /* UniversalFramework_Test.xcconfig */,
+				D455A08C22B8192900E20BE3 /* UniversalFramework_Framework.xcconfig */,
+				D455A08D22B8192900E20BE3 /* LICENSE */,
+				D455A08E22B8192900E20BE3 /* README.md */,
+				D455A08F22B8192900E20BE3 /* UniversalFramework_Base.xcconfig */,
+				D455A09022B8192900E20BE3 /* UniversalFramework_Test.xcconfig */,
 			);
-			path = xcconfigs;
+			path = XCConfigs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +163,7 @@
 				D4A0B52922B7C9B200E74E09 /* DDXMLNode.h in Headers */,
 				D4A0B52422B7C99E00E74E09 /* DDXML.h in Headers */,
 				D4A0B52C22B7C9BE00E74E09 /* DDXMLPrivate.h in Headers */,
+				D4667B4C22B80E2300365E91 /* DDXMLDTD.h in Headers */,
 				D4A0B52B22B7C9B900E74E09 /* KissXML.h in Headers */,
 				D4A0B52722B7C9AA00E74E09 /* DDXMLElement.h in Headers */,
 				D4A0B52D22B7C9CB00E74E09 /* NSString+DDXML.h in Headers */,
@@ -238,6 +245,7 @@
 				D4A0B52822B7C9B000E74E09 /* DDXMLElement.m in Sources */,
 				D4A0B52622B7C9A700E74E09 /* DDXMLDocument.m in Sources */,
 				D4A0B52E22B7C9CF00E74E09 /* NSString+DDXML.m in Sources */,
+				D4667B4D22B80E2300365E91 /* DDXMLDTD.m in Sources */,
 				D4A0B53022B7C9D800E74E09 /* DDXMLElementAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,7 +376,7 @@
 		};
 		D4A0B52122B7C91E00E74E09 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D4A0B53222B7CA4D00E74E09 /* UniversalFramework_Framework.xcconfig */;
+			baseConfigurationReference = D455A08C22B8192900E20BE3 /* UniversalFramework_Framework.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -399,7 +407,7 @@
 		};
 		D4A0B52222B7C91E00E74E09 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D4A0B53222B7CA4D00E74E09 /* UniversalFramework_Framework.xcconfig */;
+			baseConfigurationReference = D455A08C22B8192900E20BE3 /* UniversalFramework_Framework.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;

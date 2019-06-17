@@ -63,7 +63,7 @@
  * Returns an initialized DDXMLDocument object, or nil if initialization fails
  * because of parsing errors or other reasons.
 **/
-- (instancetype)initWithXMLString:(NSString *)string options:(NSUInteger)mask error:(NSError **)error
+- (instancetype)initWithXMLString:(NSString *)string options:(DDNSXMLNodeOptions)mask error:(NSError **)error
 {
 	return [self initWithData:[string dataUsingEncoding:NSUTF8StringEncoding]
 	                  options:mask
@@ -76,7 +76,7 @@
  * Returns an initialized DDXMLDocument object, or nil if initialization fails
  * because of parsing errors or other reasons.
 **/
-- (instancetype)initWithData:(NSData *)data options:(NSUInteger)mask error:(NSError **)error
+- (instancetype)initWithData:(NSData *)data options:(DDNSXMLNodeOptions)mask error:(NSError **)error
 {
 	if (data == nil || [data length] == 0)
 	{
@@ -101,6 +101,90 @@
 	}
 	
 	return [self initWithDocPrimitive:doc owner:nil];
+}
+
+- (instancetype)initWithRootElement:(DDXMLElement *)element
+{
+#if DDXML_DEBUG_MEMORY_ISSUES
+    DDXMLNotZombieAssert();
+#endif
+    
+    // NSXML version uses this same assertion
+    DDXMLAssert([element _hasParent] == NO, @"Cannot add an attribute with a parent; detach or copy first");
+    DDXMLAssert(IsXmlElementPtr(element->genericPtr), @"Not an attribute");
+    
+    xmlDocPtr doc = xmlNewDoc(BAD_CAST "1.0");
+    xmlDocSetRootElement(doc, (xmlNodePtr)element->genericPtr);
+
+    return [self initWithDocPrimitive:doc owner:nil];
+}
+
+- (void)setVersion:(NSString *)version
+{
+    const xmlChar *xmlVersion = [version xmlChar];
+    
+    xmlDocPtr doc = (xmlDocPtr)self->genericPtr;
+    doc->version = xmlVersion;
+}
+
+- (NSString *)version
+{
+    xmlDocPtr doc = (xmlDocPtr)self->genericPtr;
+    return [NSString stringWithUTF8String:(const char *)doc->version];
+}
+
+- (void)setStandalone:(BOOL)standalone
+{
+    xmlDocPtr doc = (xmlDocPtr)self->genericPtr;
+    doc->standalone = standalone ? 1 : 0;
+}
+
+- (BOOL)isStandalone
+{
+    xmlDocPtr doc = (xmlDocPtr)self->genericPtr;
+    return doc->standalone != 0;
+}
+
+- (void)setDTD:(DDXMLDTD *)DTD
+{
+    xmlDocPtr doc = (xmlDocPtr)self->genericPtr;
+    
+    const xmlChar *name = [DTD.name xmlChar];
+    const xmlChar *externalID = [DTD.publicID xmlChar];
+    const xmlChar *systemID = [DTD.systemID xmlChar];
+    
+    xmlNewDtd(doc, name, externalID, systemID);
+}
+
+- (DDXMLDTD *)DTD
+{
+    xmlDocPtr doc = (xmlDocPtr)self->genericPtr;
+    xmlDtdPtr dtd = (xmlDtdPtr)xmlGetIntSubset(doc);
+    
+    DDXMLDTD *DTD = [[DDXMLDTD alloc] init];
+    DTD.name = [NSString stringWithUTF8String:(const char *)dtd->name];
+    DTD.publicID = [NSString stringWithUTF8String:(const char *)dtd->ExternalID];
+    DTD.systemID = [NSString stringWithUTF8String:(const char *)dtd->SystemID];
+    
+    return DTD;
+}
+
+- (void)setRootElement:(DDXMLNode *)root
+{
+#if DDXML_DEBUG_MEMORY_ISSUES
+    DDXMLNotZombieAssert();
+#endif
+    
+    // NSXML version uses this same assertion
+    DDXMLAssert([root _hasParent] == NO, @"Cannot add an attribute with a parent; detach or copy first");
+    DDXMLAssert(IsXmlElementPtr(root->genericPtr), @"Not an attribute");
+    
+    xmlDocPtr doc = (xmlDocPtr)self->genericPtr;
+    
+    xmlDocSetRootElement(doc, (xmlNodePtr)root->genericPtr);
+    
+    // The attribute is now part of the xml tree heirarchy
+    root->owner = self;
 }
 
 /**
@@ -131,7 +215,7 @@
 	return [[self XMLString] dataUsingEncoding:NSUTF8StringEncoding];
 }
 
-- (NSData *)XMLDataWithOptions:(NSUInteger)options
+- (NSData *)XMLDataWithOptions:(DDNSXMLNodeOptions)options
 {
 	// Zombie test occurs in XMLString
 	
