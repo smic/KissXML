@@ -103,20 +103,26 @@
 	return [self initWithDocPrimitive:doc owner:nil];
 }
 
+- (id)init
+{
+    xmlDocPtr doc = xmlNewDoc(BAD_CAST "1.0");
+    
+    return [self initWithDocPrimitive:doc owner:nil];
+}
+
 - (instancetype)initWithRootElement:(DDXMLElement *)element
 {
 #if DDXML_DEBUG_MEMORY_ISSUES
     DDXMLNotZombieAssert();
 #endif
     
-    // NSXML version uses this same assertion
-    DDXMLAssert([element _hasParent] == NO, @"Cannot add an attribute with a parent; detach or copy first");
-    DDXMLAssert(IsXmlElementPtr(element->genericPtr), @"Not an attribute");
-    
     xmlDocPtr doc = xmlNewDoc(BAD_CAST "1.0");
-    xmlDocSetRootElement(doc, (xmlNodePtr)element->genericPtr);
-
-    return [self initWithDocPrimitive:doc owner:nil];
+    
+    self = [self initWithDocPrimitive:doc owner:nil];
+    
+    [self setRootElement:element];
+    
+    return self;
 }
 
 - (void)setVersion:(NSString *)version
@@ -124,7 +130,7 @@
     const xmlChar *xmlVersion = [version xmlChar];
     
     xmlDocPtr doc = (xmlDocPtr)self->genericPtr;
-    doc->version = xmlVersion;
+    doc->version = xmlStrdup(xmlVersion);
 }
 
 - (NSString *)version
