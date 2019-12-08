@@ -127,7 +127,7 @@
 
 - (void)setVersion:(NSString *)version
 {
-    const xmlChar *xmlVersion = [version xmlChar];
+    const xmlChar *xmlVersion = [version dd_xmlChar];
     
     xmlDocPtr doc = (xmlDocPtr)self->genericPtr;
     doc->version = xmlStrdup(xmlVersion);
@@ -155,9 +155,9 @@
 {
     xmlDocPtr doc = (xmlDocPtr)self->genericPtr;
     
-    const xmlChar *name = [DTD.name xmlChar];
-    const xmlChar *externalID = [DTD.publicID xmlChar];
-    const xmlChar *systemID = [DTD.systemID xmlChar];
+    const xmlChar *name = [DTD.name dd_xmlChar];
+    const xmlChar *externalID = [DTD.publicID dd_xmlChar];
+    const xmlChar *systemID = [DTD.systemID dd_xmlChar];
     
     xmlNewDtd(doc, name, externalID, systemID);
 }
